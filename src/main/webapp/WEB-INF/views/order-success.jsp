@@ -1,66 +1,33 @@
-<%@ page language="java"
-contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-Integer orderId =
-(Integer) request.getAttribute("orderId");
-
-
-Double totalAmount =
-    (Double) request.getAttribute("totalAmount");
-
-
+    Integer orderId = (Integer) request.getAttribute("orderId");
+    Double totalAmount = (Double) request.getAttribute("totalAmount");
 %>
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-
-<meta charset="UTF-8">
-
-<title>Order Confirmed - FashionStore</title>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - FashionStore</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
 </head>
-
 <body>
+<%@ include file="partials/navbar.jsp" %>
 
+<main class="success-wrap">
+    <div class="success-card">
+        <div class="success-mark">✓</div>
+        <h1>Order Placed Successfully!</h1>
+        <p>Thank you for shopping with FashionStore.</p>
+        <p><strong>Order ID:</strong> <%= orderId %></p>
+        <p><strong>Order Total:</strong> ₹<%= String.format("%.0f", totalAmount) %></p>
+        <div class="success-actions">
+            <a class="btn btn-primary" href="<%= request.getContextPath() %>/home">Continue shopping</a>
+            <a class="btn btn-outline" href="<%= request.getContextPath() %>/orders">View my orders</a>
+        </div>
+    </div>
+</main>
 
-<h1>Order Placed Successfully!</h1>
-
-<h2>Thank you for shopping with FashionStore.</h2>
-
-<p>
-    Your order has been placed successfully.
-</p>
-
-<p>
-    <strong>Order ID:</strong>
-    <%= orderId %>
-</p>
-
-<p>
-    <strong>Order Total:</strong>
-    ₹<%= totalAmount %>
-</p>
-
-<br>
-
-<a href="<%= request.getContextPath() %>/home">
-    Continue Shopping
-</a>
-
-<br><br>
-
-<a href="<%= request.getContextPath() %>/orders">
-    View My Orders
-</a>
-
-
+<%@ include file="partials/footer.jsp" %>
 </body>
-
 </html>

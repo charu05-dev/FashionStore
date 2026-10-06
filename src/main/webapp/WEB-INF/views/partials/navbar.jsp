@@ -1,84 +1,43 @@
 <header class="navbar">
+    <div class="navbar-container">
+        <a href="${pageContext.request.contextPath}/home" class="logo">
+            FashionStore<span>.</span>
+        </a>
 
+        <form class="search-box"
+              action="${pageContext.request.contextPath}/products"
+              method="get">
+            <input type="text"
+                   name="keyword"
+                   placeholder="Search fashion..."
+                   aria-label="Search products">
+            <button type="submit" aria-label="Search">→</button>
+        </form>
 
-<div class="navbar-container">
-
-    <!-- FashionStore Logo -->
-
-    <a href="${pageContext.request.contextPath}/products"
-       class="logo">
-
-        FashionStore
-
-    </a>
-
-
-    <!-- Search Box -->
-
-    <div class="search-box">
-
-        <input type="text"
-               placeholder="Search products..."
-               name="keyword">
-
-        <button type="button">
-
-            Search
-
+        <button class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-label="Open menu">
+            Menu
         </button>
 
+        <nav class="nav-links">
+            <a href="${pageContext.request.contextPath}/products">Products</a>
+
+            <%
+                Object loggedInUser = session.getAttribute("loggedInUser");
+                if (loggedInUser != null) {
+            %>
+                <a href="${pageContext.request.contextPath}/logout">Logout</a>
+            <%
+                } else {
+            %>
+                <a href="${pageContext.request.contextPath}/login">Login</a>
+            <%
+                }
+            %>
+
+            <a href="${pageContext.request.contextPath}/cart" class="cart-link">Cart</a>
+        </nav>
     </div>
-
-
-    <!-- Navigation Links -->
-
-    <nav class="nav-links">
-
-        <a href="${pageContext.request.contextPath}/products">
-
-            Products
-
-        </a>
-
-
-        <%
-            Object loggedInUser =
-                    session.getAttribute("loggedInUser");
-
-            if (loggedInUser != null) {
-        %>
-
-            <a href="${pageContext.request.contextPath}/logout">
-
-                Logout
-
-            </a>
-
-        <%
-            } else {
-        %>
-
-            <a href="${pageContext.request.contextPath}/login">
-
-                Login
-
-            </a>
-
-        <%
-            }
-        %>
-
-
-        <a href="${pageContext.request.contextPath}/cart"
-           class="cart-link">
-
-            Cart
-
-        </a>
-
-    </nav>
-
-</div>
-
-
 </header>
