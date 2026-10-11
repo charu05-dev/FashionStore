@@ -15,11 +15,10 @@
         categories = null;
     }
 
-    String heroImage = request.getContextPath() + "/images/hero.jpg";
+    String heroImage = "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1200&q=85";
     if (featuredProducts != null && !featuredProducts.isEmpty()
             && featuredProducts.get(0).getImage() != null) {
-        heroImage = request.getContextPath() + "/images/products/"
-                + featuredProducts.get(0).getImage();
+        // Keep the hero focused on a model-worn editorial look; product cards below use catalog images.
     }
 %>
 <!DOCTYPE html>
@@ -37,14 +36,13 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <p class="hero-eyebrow">New season edit</p>
-                <h1 class="hero-title">Wear the mood.<br>Own the moment.</h1>
+                <p class="hero-eyebrow">THE NEW SEASON EDIT</p>
+                <h1 class="hero-title">Less noise.<br>More style.</h1>
                 <p class="hero-description">
-                    Discover bold silhouettes, everyday essentials, and statement pieces
-                    made for a modern wardrobe.
+                    Everyday essentials and statement pieces for wherever life takes you.
                 </p>
                 <a href="${pageContext.request.contextPath}/products" class="btn btn-outline">
-                    Shop the collection
+                    Shop collection →
                 </a>
             </div>
             <div class="hero-image">
@@ -75,8 +73,8 @@
     <section class="section section-white">
         <div class="container">
             <div class="section-header">
-                <h2>Featured finds</h2>
-                <p>Large-format pieces from the latest drop.</p>
+                <h2>Worth a closer look.</h2>
+                <p>Pieces selected for your everyday wardrobe.</p>
             </div>
             <div class="product-grid">
                 <%
@@ -119,7 +117,7 @@
                     <h2>Your next favorite outfit is one click away.</h2>
                     <p>Filter by color, size, brand, and price — then add it to your cart.</p>
                 </div>
-                <a href="${pageContext.request.contextPath}/products" class="btn btn-outline">Browse all styles</a>
+                <a href="${pageContext.request.contextPath}/products" class="btn btn-outline">Explore all styles →</a>
             </div>
         </div>
     </section>
