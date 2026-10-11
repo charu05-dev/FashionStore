@@ -1,5 +1,4 @@
 
-
 package com.fashionstore.util;
 
 import java.sql.Connection;
@@ -8,32 +7,17 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/fashion_store";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "thequeen:05";
-
     public static Connection getConnection() {
-
-        Connection connection = null;
+        String url = System.getenv("DB_URL");
+        String username = System.getenv("DB_USERNAME");
+        String password = System.getenv("DB_PASSWORD");
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-
-            connection = DriverManager.getConnection(
-                URL,
-                USERNAME,
-                PASSWORD
-            );
-
-            System.out.println("Database connected successfully!");
-
+            return DriverManager.getConnection(url, username, password);
         } catch (SQLException | ClassNotFoundException e) {
-            System.out.println("Database connection failed!");
             e.printStackTrace();
+            return null;
         }
-
-        return connection;
     }
 }
-
-
